@@ -12,14 +12,15 @@
     filename: "pgdg"
 
 - name: install postgres
-  apt: name={{ item }} state=present
-  with_items:
-    - postgresql-contrib-{{ pg_version }}
-    - postgresql-server-dev-{{ pg_version }}
-    - postgresql-client-{{ pg_version }}
-    - libpq-dev
-    - postgresql-{{ pg_version }}
-    - python-psycopg2
+  apt:
+    name:
+      - postgresql-contrib-{{ pg_version }}
+      - postgresql-server-dev-{{ pg_version }}
+      - postgresql-client-{{ pg_version }}
+      - libpq-dev
+      - postgresql-{{ pg_version }}
+      - python3-psycopg2
+    state: present
 
 - name: remove the postgres meta-package
   apt: name=postgresql state=absent
